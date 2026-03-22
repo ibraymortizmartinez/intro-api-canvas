@@ -1,0 +1,590 @@
+/* =========================================
+   VARIABLES Y RESETEO
+   ========================================= */
+:root {
+    --bg-dark: #0f172a;        /* Fondo principal */
+    --card-bg: #1e293b;        /* Fondo de tarjetas */
+    --text-main: #f8fafc;      /* Texto principal */
+    --text-muted: #94a3b8;     /* Texto secundario */
+    --accent: #3b82f6;         /* Azul brillante */
+    --accent-hover: #2563eb;   /* Azul más oscuro para hover */
+    --border-color: #334155;   /* Bordes sutiles */
+    --canvas-grid: rgba(255, 255, 255, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* =========================================
+   NAVBAR (HEADER)
+   ========================================= */
+.navbar {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.navbar nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--text-main);
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL Y TEXTOS
+   ========================================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.intro-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.intro-text p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   GRILLA Y TARJETAS (CARDS)
+   ========================================= */
+.grid-galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta h3 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: left;
+}
+
+/* Hace que el Pac-Man ocupe más espacio en pantallas grandes */
+@media (min-width: 768px) {
+    .span-2 {
+        grid-column: span 2;
+    }
+}
+
+/* =========================================
+   CANVAS (ESTILO DE LIENZO TÉCNICO)
+   ========================================= */
+canvas {
+    background-color: #0f172a; /* Fondo más oscuro que la tarjeta */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    /* Patrón de cuadrícula de fondo simulando papel cuadriculado */
+    background-image: 
+        linear-gradient(var(--canvas-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
+    background-size: 20px 20px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+button {
+    background-color: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #0b1120;
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-sub {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #475569;
+}
+
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --border-color: #334155;
+    --grid-line: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg-dark); color: var(--text-main); }
+
+/* Navbar */
+.navbar {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 100;
+}
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: var(--accent); }
+.navbar nav a { color: var(--text-muted); text-decoration: none; margin-left: 1.5rem; font-weight: 600; transition: 0.3s; }
+.navbar nav a:hover { color: var(--accent); }
+
+/* Layout */
+.container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+.intro-text { text-align: center; margin-bottom: 4rem; }
+.intro-text h2 { font-size: 2.8rem; letter-spacing: -1px; margin-bottom: 1rem; }
+.intro-text p { color: var(--text-muted); font-size: 1.2rem; }
+
+/* Tarjetas */
+.grid-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+.tarjeta {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.tarjeta:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+.tarjeta-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
+.numero { color: var(--accent); font-weight: 800; font-size: 0.8rem; border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; }
+.tarjeta h3 { font-size: 1.1rem; }
+
+/* Canvas */
+canvas {
+    background-color: #0b1120;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Transición para el efecto de redibujar */
+}
+
+/* Botón */
+button {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.8rem;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover { background: var(--accent); color: white; }
+
+.span-2 { grid-column: span 2; }
+@media (max-width: 768px) { .span-2 { grid-column: span 1; } }
+
+/* Footer Profesional */
+.main-footer {
+    background-color: #0b1120;
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem 0;
+    margin-top: 5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 4rem;
+}
+
+.footer-section h3 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.footer-section p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 300px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-section ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* Redes Sociales */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+/* Barra inferior */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 2rem 2rem 0;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer-section p {
+        margin: 0 auto;
+    }
+    .social-links {
+        justify-content: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* ... (Mantén el resto del CSS del footer anterior) ... */
+
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    width: 42px;
+    height: 42px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f8fafc;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Colores de Hover personalizados */
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: white;
+}
+
+/* GitHub Hover */
+.social-links a[title="GitHub"]:hover {
+    background: #24292e;
+    border-color: #24292e;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Instagram Hover */
+.social-links a[title="Instagram"]:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-color: transparent;
+}
+
+/* LinkedIn Hover */
+.social-links a[title="LinkedIn"]:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+/* CV Link Hover (Color de acento azul brillante) */
+.social-links .cv-link:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+/* Variables para Temas */
+:root {
+    --accent: #3b82f6;
+    --nav-bg: rgba(15, 23, 42, 0.9);
+}
+
+/* Navbar Principal */
+.navbar {
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Barra de progreso superior */
+#scroll-progress {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), #10b981);
+    transition: width 0.1s ease;
+}
+
+/* Menú y Enlaces */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-link:hover { color: var(--accent); }
+
+/* Badge de Proyectos */
+.badge {
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--accent);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 5px;
+    border: 1px solid var(--accent);
+}
+
+/* Dropdown de Temas */
+.dropdown { position: relative; display: inline-block; }
+
+.dropbtn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: var(--card-bg);
+    min-width: 180px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    top: 35px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--text-muted);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent);
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+/* Botón Contactar */
+.btn-nav {
+    background: var(--accent);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Puntos de color para el menú */
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.azul { background: #3b82f6; }
+.dot.rosa { background: #ff00ff; }
+.dot.blanco { background: #f8fafc; }
+
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Aquí podrías añadir un menú hamburguesa luego */
+}

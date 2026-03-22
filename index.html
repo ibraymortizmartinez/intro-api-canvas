@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficación 2D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/bloc-de-dibujo.png">
+</head>
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<header class="navbar">
+    <div id="scroll-progress"></div>
+
+    <div class="nav-container">
+        <div class="nav-brand">
+            <h1 class="logo">Canvas<span>LAB</span></h1>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#galeria" class="nav-link">
+                Proyectos <span class="badge" id="canvas-count">7</span>
+            </a>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Paleta <i class="fas fa-palette"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="cambiarTema('neon')">
+                        <span class="dot azul"></span> Neón Classic
+                    </a>
+                    <a href="#" onclick="cambiarTema('cyber')">
+                        <span class="dot rosa"></span> Cyberpunk
+                    </a>
+                    <a href="#" onclick="cambiarTema('minimal')">
+                        <span class="dot blanco"></span> Minimalista
+                    </a>
+                </div>
+            </div>
+
+            <a href="https://ibraymortizmartinez.com/#0" target="_blank" class="nav-link">Sobre mí</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <div class="intro-text">
+            <h2>Laboratorio de Graficación 2D</h2>
+            <p>Demostración de trazados vectoriales y curvas matemáticas mediante la API de Canvas.</p>
+        </div>
+
+        <section class="grid-galeria">
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">01</span>
+                    <h3>Cuadrados Anidados</h3>
+                </div>
+                <canvas id="canvas-cuadrado" width="250" height="250"></canvas>
+                <button onclick="dibujarCuadrado()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">02</span>
+                    <h3>Triángulo Rectángulo</h3>
+                </div>
+                <canvas id="canvas-triangulo" width="250" height="250"></canvas>
+                <button onclick="dibujarTriangulo()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">03</span>
+                    <h3>Rostro (Arcos)</h3>
+                </div>
+                <canvas id="canvas-rostro" width="250" height="250"></canvas>
+                <button onclick="dibujarRostro()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">04</span>
+                    <h3>Rellenos y Trazos</h3>
+                </div>
+                <canvas id="canvas-lineas" width="250" height="250"></canvas>
+                <button onclick="dibujarLineas()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">05</span>
+                    <h3>Matriz de Arcos</h3>
+                </div>
+                <canvas id="canvas-arcos" width="250" height="250"></canvas>
+                <button onclick="dibujarArcos()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <span class="numero">06</span>
+                    <h3>Curvas Bézier</h3>
+                </div>
+                <canvas id="canvas-bezier" width="250" height="250"></canvas>
+                <button onclick="dibujarBezier()">Redibujar</button>
+            </article>
+
+            <article class="tarjeta span-2">
+                <div class="tarjeta-header">
+                    <span class="numero">07</span>
+                    <h3>Composición Final: Pac-Man</h3>
+                </div>
+                <canvas id="canvas-pacman" width="500" height="250"></canvas>
+                <button onclick="dibujarPacman()">Redibujar</button>
+            </article>
+        </section>
+    </main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h2 class="logo">Canvas<span>LAB</span></h2>
+            <p>Laboratorio interactivo dedicado a la exploración de gráficos 2D y trazados vectoriales mediante la API de HTML5.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/ibraymortizmartinez" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/ibraym_om?igsh=N2UzdWl4b2g4dG9p" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/angel-ibraym-ortiz-mart%C3%ADnez-973360354/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://ibraymortizmartinez.com/#0" target="_blank" title="Mi CV Personal" class="cv-link">
+                    <i class="fas fa-user-tie"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-section links">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#canvas-cuadrado">Figuras Básicas</a></li>
+                <li><a href="#canvas-bezier">Curvas Complejas</a></li>
+                <li><a href="#canvas-pacman">Composiciones</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section info">
+            <h3>Proyecto</h3>
+            <ul>
+                <li><strong>Materia:</strong> Graficación 2D</li>
+                <li><strong>Semestre:</strong> 2026</li>
+                <li><strong>Estado:</strong> v2.1.0 Final</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ortiz Martínez Angel Ibraym. Casi todos los derechos reservados.</p>
+        <div class="footer-status">
+            <span class="status-dot"></span> Online - Ready to Draw
+        </div>
+    </div>
+</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
